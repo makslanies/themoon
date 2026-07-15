@@ -1,5 +1,7 @@
 # The Moon
 
+![The Moon preview](assets/prev.png)
+
 Hugo-сайт дизайн-студии интерьеров The Moon.
 
 ## Автор
