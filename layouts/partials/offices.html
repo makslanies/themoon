@@ -1,0 +1,43 @@
+{{- $o := .site.offices -}}
+{{- if $o }}
+<section class="offices-section white-bg position-relative overflow-hidden" id="{{ $o.id }}">
+  <h2 class="title text-center">{{ $o.title }}</h2>
+  <div class="container">
+    <div class="row justify-content-center mb-4 mb-lg-5">
+      <div class="col-lg-9 text-center">
+        {{- with $o.lead }}
+        <p class="section-lead mb-3">{{ . }}</p>
+        {{- end }}
+        {{- with $o.description }}
+        <p class="offices-intro">{{ . | safeHTML }}</p>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="row g-3 g-lg-4 mb-4 mb-lg-5">
+      {{- range $o.pillars }}
+      <div class="col-md-4">
+        <div class="office-pillar h-100">
+          <h3 class="office-pillar__title">{{ .title }}</h3>
+          <p class="office-pillar__text mb-0">{{ .text | safeHTML }}</p>
+        </div>
+      </div>
+      {{- end }}
+    </div>
+
+    {{- with $o.collages }}
+    <div class="gallery-collages">
+      {{- range . }}
+      {{ partial "photo-collage.html" (dict "images" .images "label" .label) }}
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with $o.cta }}
+    <div class="text-center mt-4 mt-lg-5">
+      <a href="{{ .url }}" class="common-btn">{{ .text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+    </div>
+    {{- end }}
+  </div>
+</section>
+{{- end }}

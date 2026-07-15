@@ -1,0 +1,48 @@
+{{- $title := .Title -}}
+{{- if .IsHome -}}
+  {{- $title = .Site.Title -}}
+{{- end -}}
+{{- $desc := .Description | default .Site.Params.description -}}
+{{- $image := .Params.image | default .Site.Params.ogImage -}}
+{{- $image = $image | absURL -}}
+{{- $canonical := .Permalink | default .Site.BaseURL -}}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ .Site.Params.author }}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ $canonical }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:locale" content="ru_RU">
+
+<meta name="twitter:card" content="{{ .Site.Params.twitterCard }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $image }}">
+
+<meta name="theme-color" content="{{ .Site.Params.themeColor }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InteriorDesigner",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ $desc }}",
+  "url": "{{ .Site.BaseURL }}",
+  "image": "{{ $image }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Вильгельма Пика, д.11",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "areaServed": "RU",
+  "priceRange": "$$"
+}
+</script>

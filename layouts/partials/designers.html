@@ -1,0 +1,31 @@
+{{- $d := .site.designers -}}
+<section class="designer-section black-bg theme-dark position-relative" id="{{ $d.id }}">
+  <h2 class="title text-center">{{ $d.title }}</h2>
+  <div class="container">
+    <div class="row gx-4 align-items-stretch">
+      <div class="col-md-6">
+        <div class="designer-box position-relative">
+          {{- range $d.members }}
+          <div class="team-member {{ .role }}">
+            <img src="{{ .image | relURL }}" class="img-fluid" alt="{{ .alt }}">
+          </div>
+          {{- end }}
+          <div class="box-border"></div>
+        </div>
+      </div>
+      <div class="col-md-6 align-self-center">
+        <div class="py-4 py-lg-5" id="designDescription">
+          {{- with $d.lead }}
+          <p class="section-lead mb-3">{{ . }}</p>
+          {{- end }}
+          <div class="pb-3 paragraph">
+            {{- range $d.paragraphs }}
+            <p>{{ . | safeHTML }}</p>
+            {{- end }}
+          </div>
+          <a href="{{ $d.cta.url }}" class="common-btn">{{ $d.cta.text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

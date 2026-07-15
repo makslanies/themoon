@@ -1,0 +1,46 @@
+{{- $f := .Site.Data.site.footer -}}
+{{- $nav := .Site.Data.site.nav -}}
+{{- $params := .Site.Params -}}
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-5 site-footer__main">
+      <div class="col-lg-4">
+        <a href="{{ "/" | relURL }}" class="d-inline-block mb-4">
+          <img src="{{ "images/the-moon.png" | relURL }}" alt="The Moon" class="site-footer__logo">
+        </a>
+        <p class="site-footer__tagline">{{ $f.tagline }}</p>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h5 class="site-footer__heading">Навигация</h5>
+        <ul class="site-footer__links list-unstyled">
+          {{- range $nav }}
+          <li><a href="#{{ .anchor }}">{{ .label }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h5 class="site-footer__heading">{{ $f.contactsTitle }}</h5>
+        <ul class="site-footer__contacts list-unstyled">
+          <li>
+            <a href="{{ $params.instagramUrl }}" target="_blank" rel="noopener noreferrer">{{ $params.instagram }}</a>
+          </li>
+          {{- range $f.addressLines }}
+          <li class="site-footer__address">{{ . }}</li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5 class="site-footer__heading">{{ $f.form.title }}</h5>
+        <p class="site-footer__desc">{{ $f.form.description }}</p>
+        <a href="#contact" class="common-btn">{{ $f.form.submit }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom text-center">
+      <p class="site-footer__copy mb-0">{{ $f.copyright }}</p>
+    </div>
+  </div>
+</footer>

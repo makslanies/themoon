@@ -1,0 +1,29 @@
+{{- $b := .site.banner -}}
+<section class="banner overflow-hidden" id="hero">
+  <div class="banner-bg" aria-hidden="true">
+    <video
+      class="banner-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="{{ $b.poster | relURL }}"
+    >
+      <source src="{{ $b.video | relURL }}" type="video/mp4">
+    </video>
+    <div class="banner-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="banner-box">
+      <div class="banner-text">
+        <div class="banner-rest" id="bannerRest">
+          <span class="banner-subtitle d-block mb-2">{{ $b.subtitle }}</span>
+          <h1 id="headingSmall">{{ $b.title | safeHTML }}</h1>
+          <h2 id="headingText">{{ $b.subtitle2 | safeHTML }}</h2>
+          <a href="{{ $b.cta.url }}" class="common-btn mt-4">{{ $b.cta.text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

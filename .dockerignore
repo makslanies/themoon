@@ -1,0 +1,11 @@
+.git
+.tools
+node_modules
+public
+resources
+extracted_images
+*.ppt
+*.crdownload
+*.md
+.hugo_build.lock
+docker-compose.override.yml

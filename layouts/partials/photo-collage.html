@@ -1,0 +1,31 @@
+{{- /*
+  Reusable 4-cell photo collage.
+  Context: dict "images" (slice of {image, alt}) "label" (optional) "class" (optional)
+  Layout: tall left | wide top | two bottom squares
+*/ -}}
+{{- $images := .images -}}
+{{- if ge (len $images) 4 -}}
+{{- $images = first 4 $images -}}
+<figure class="photo-collage {{ with .class }}{{ . }}{{ end }}">
+  {{- with .label }}
+  <figcaption class="photo-collage__label">{{ . }}</figcaption>
+  {{- end }}
+  <div class="photo-collage__grid" role="group"{{ with .label }} aria-label="{{ . }}"{{ end }}>
+    {{- range $i, $img := $images }}
+    <div class="photo-collage__cell photo-collage__cell--{{ add $i 1 }}">
+      <div class="photo-collage__frame">
+        <div class="photo-collage__media">
+          <img
+            class="photo-collage__img"
+            src="{{ $img.image | relURL }}"
+            alt="{{ $img.alt | default "Интерьер The Moon" }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+      </div>
+    </div>
+    {{- end }}
+  </div>
+</figure>
+{{- end }}

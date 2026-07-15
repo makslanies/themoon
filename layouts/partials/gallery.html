@@ -1,0 +1,24 @@
+{{- $g := .site.gallery -}}
+<section class="gallery-section white-bg position-relative overflow-hidden" id="{{ $g.id }}">
+  <h2 class="title text-center">{{ $g.title }}</h2>
+  <div class="container">
+    {{- if or $g.subtitle $g.description }}
+    <div class="row justify-content-center mb-4 mb-md-5">
+      <div class="col-lg-8 text-center gallery-intro">
+        {{- with $g.subtitle }}
+        <p class="section-lead mb-2">{{ . }}</p>
+        {{- end }}
+        {{- with $g.description }}
+        <p class="gallery-intro__text">{{ . | safeHTML }}</p>
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
+
+    <div class="gallery-collages">
+      {{- range $g.collages }}
+      {{ partial "photo-collage.html" (dict "images" .images "label" .label) }}
+      {{- end }}
+    </div>
+  </div>
+</section>

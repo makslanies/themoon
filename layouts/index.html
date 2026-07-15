@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ $site := .Site.Data.site }}
+  {{ partial "banner.html" (dict "site" $site "page" .) }}
+  {{ partial "company.html" (dict "site" $site "page" .) }}
+  {{ partial "designers.html" (dict "site" $site "page" .) }}
+  {{ partial "projects.html" (dict "site" $site "page" .) }}
+  {{ partial "testimonials.html" (dict "site" $site "page" .) }}
+  {{ partial "gallery.html" (dict "site" $site "page" .) }}
+  {{ partial "offices.html" (dict "site" $site "page" .) }}
+  {{ partial "contact.html" (dict "site" $site "page" .) }}
+{{ end }}

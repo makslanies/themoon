@@ -1,0 +1,35 @@
+{{- $t := .site.testimonials -}}
+<section class="testimonial-section white-bg position-relative overflow-hidden" id="{{ $t.id }}">
+  <h2 class="title text-center">{{ $t.title }}</h2>
+  <div class="container">
+    {{- range $i, $item := $t.items }}
+    <div class="row g-0 {{ if $item.reverse }}reverse-row right-row{{ else }}left-row{{ end }}">
+      {{- if $item.reverse }}
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="{{ $item.image | relURL }}" class="img-fluid" alt="{{ $item.name }}">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="content {{ if $item.reverse }}border-start-0{{ else }}border-end-0{{ end }}">
+          <h3>{{ $item.name }}</h3>
+          <p>&ldquo;{{ $item.text }}&rdquo;</p>
+        </div>
+      </div>
+      {{- else }}
+      <div class="col-md-6">
+        <div class="content border-end-0">
+          <h3>{{ $item.name }}</h3>
+          <p>&ldquo;{{ $item.text }}&rdquo;</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="{{ $item.image | relURL }}" class="img-fluid" alt="{{ $item.name }}">
+        </div>
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</section>

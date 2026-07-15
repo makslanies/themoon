@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: themoon-web:latest
+    container_name: themoon-web
+    restart: unless-stopped
+    ports:
+      # Host port is chosen on the server after checking free ports.
+      # Default: 1314 (Hugo default 1313 often free; 1314 avoids clash with local dev).
+      - "${HOST_PORT:-1314}:80"

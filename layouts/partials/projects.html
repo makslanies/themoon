@@ -1,0 +1,47 @@
+{{- $p := .site.projects -}}
+<section class="projects-section white-bg position-relative overflow-hidden" id="{{ $p.id }}">
+  <h2 class="title text-center">{{ $p.title }}</h2>
+  <div class="container">
+    <div class="row align-items-stretch overflow-hidden gy-1 gy-md-0 gx-1 gx-md-3 gx-lg-4">
+      <div class="col-md-9">
+        <div class="row g-1 g-md-3 g-lg-4 overflow-hidden">
+          {{- /* Original mosaic: col-8, col-4, col-4, col-8 (content) */ -}}
+          {{- range $i, $img := $p.images }}
+          {{- $col := "col-8" -}}
+          {{- if eq $i 1 -}}{{- $col = "col-4" -}}{{- end -}}
+          {{- if eq $i 2 -}}{{- $col = "col-4" -}}{{- end -}}
+          {{- if ge $i 3 -}}{{- $col = cond (eq (mod $i 2) 0) "col-8" "col-4" -}}{{- end -}}
+          <div class="{{ $col }}">
+            <div class="project-box {{ $img.class }}">
+              <img src="{{ $img.image | relURL }}" class="img-fluid" alt="{{ $img.alt }}">
+            </div>
+          </div>
+          {{- end }}
+          <div class="col-8 overflow-hidden">
+            <div class="project-box project-content">
+              <img src="{{ (index $p.images 0).image | relURL }}" class="img-fluid bg-img" alt="">
+              <div class="project-content__inner">
+                <p>{{ $p.content | safeHTML }}</p>
+                <div class="services-list mt-3">
+                  {{- range $p.services }}
+                  <div class="service-item mb-2">
+                    <span class="service-number">{{ .number }}</span>
+                    <strong>{{ .title }}</strong>
+                    <p class="mb-0 mt-1">{{ .text | safeHTML }}</p>
+                  </div>
+                  {{- end }}
+                </div>
+                <a href="{{ $p.cta.url }}" class="common-btn ms-auto d-table mt-3">{{ $p.cta.text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="project-box big pbox-right">
+          <img src="{{ $p.sidebar | relURL }}" class="img-fluid" alt="Интерьер">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+{{- $site := .Site.Data.site -}}
+<header class="site-header fixed-top">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <a href="{{ "/" | relURL }}" class="site-logo">
+        <img src="{{ "images/the-moon.png" | relURL }}" alt="The Moon" class="site-logo__img">
+      </a>
+      <nav class="site-nav d-none d-lg-flex align-items-center gap-4" aria-label="Основная навигация">
+        {{- range $site.nav }}
+        <a href="#{{ .anchor }}" class="site-nav__link">{{ .label }}</a>
+        {{- end }}
+      </nav>
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <a href="#contact" class="common-btn common-btn--sm d-none d-sm-inline-flex">{{ $site.banner.cta.text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+        <button type="button" class="site-burger d-lg-none" id="siteBurger" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteNavMobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav class="site-nav-mobile" id="siteNavMobile" aria-label="Мобильная навигация" hidden>
+    <div class="container">
+      {{- range $site.nav }}
+      <a href="#{{ .anchor }}" class="site-nav-mobile__link">{{ .label }}</a>
+      {{- end }}
+      <a href="#contact" class="common-btn site-nav-mobile__cta">{{ $site.banner.cta.text }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,29 @@
+baseURL = 'https://the-moon.design/'
+locale = 'ru-ru'
+title = 'The Moon — Дизайн-студия интерьеров'
+defaultContentLanguage = 'ru'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  description = 'Дизайн-студия The Moon: проектирование и комплектация квартир, загородных домов, отелей и офисов от эконом до премиум-класса. Полный цикл услуг, прямые поставки из Китая.'
+  author = 'The Moon Design Studio'
+  instagram = '@themoon_design'
+  instagramUrl = 'https://www.instagram.com/themoon_design?utm_source=qr&igsh=czI4Zjh5bTZpcXU='
+  address = 'г. Москва, МЦК Ботанический Сад, ул. Вильгельма Пика, д.11'
+  ogImage = '/images/interior-25.jpg'
+  twitterCard = 'summary_large_image'
+  themeColor = '#1c1c1c'
+
+[languages.ru]
+  label = 'Русский'
+  weight = 1
+  title = 'The Moon — Дизайн-студия интерьеров'
+
+[outputs]
+  home = ['HTML', 'RSS']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

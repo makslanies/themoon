@@ -1,0 +1,39 @@
+{{- $c := .site.contact -}}
+{{- $f := .site.footer -}}
+{{- $params := .page.Site.Params -}}
+<section class="contact-us position-relative overflow-hidden" id="{{ $c.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h4>{{ $c.title }}</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <img src="{{ "icons/instagram.svg" | relURL }}" class="img-fluid" alt="Instagram">
+            <a class="nav-link" href="{{ $params.instagramUrl }}" target="_blank" rel="noopener noreferrer">{{ $params.instagram }}</a>
+          </li>
+          <li class="nav-item">
+            <img src="{{ "icons/location.svg" | relURL }}" class="img-fluid" alt="Адрес">
+            <span class="nav-link pe-none">
+              {{- range $f.addressLines }}{{ . }}<br>{{- end }}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7">
+        <div class="contact-info">
+          <div class="contact-box"></div>
+          <div class="contact-border"></div>
+          <h3>{{ $c.subtitle }}</h3>
+          <p>{{ $c.description }}</p>
+          <form class="contact-form" action="#" method="post">
+            <div class="mb-3">
+              <label for="contact-name" class="form-label">{{ $c.form.nameLabel }}</label>
+              <input type="text" class="form-control" id="contact-name" name="name" placeholder="{{ $c.form.namePlaceholder }}" required>
+            </div>
+            <button type="submit" class="common-btn">{{ $c.form.submit }} <img src="{{ "icons/arrow-right.svg" | relURL }}" class="img-fluid" alt=""></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
